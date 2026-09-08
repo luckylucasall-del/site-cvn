@@ -163,3 +163,7 @@
     max-width: 100%;
   }
 }
+
+#nl-badge-frame {
+  display: none !important;
+}
