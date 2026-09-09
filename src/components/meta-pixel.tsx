@@ -10,6 +10,7 @@ declare global {
       loaded?: boolean;
     };
     _fbq?: Window["fbq"];
+    __metaPixelInitialized?: boolean;
   }
 }
 
@@ -40,8 +41,11 @@ export function MetaPixel() {
       script.async = true;
       script.src = "https://connect.facebook.net/en_US/fbevents.js";
       document.head.appendChild(script);
+    }
 
+    if (!window.__metaPixelInitialized) {
       window.fbq("init", pixelId);
+      window.__metaPixelInitialized = true;
     }
 
     window.fbq("track", "PageView");
